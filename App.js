@@ -24,10 +24,8 @@ const App = () => {
           `http://api.weatherapi.com/v1/forecast.json?key=b53d68e3e4894fba901174157231712&q=${search}&days=7&aqi=no&alerts=no`
         );
         setData(response.data);
-        setError(null); 
       } catch (error) {
         setError(error);
-        setData(null);
       }
     };
 
