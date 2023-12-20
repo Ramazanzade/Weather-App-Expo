@@ -11,10 +11,9 @@ const App = () => {
     { id: 6, text: 'Saturday' },
     { id: 7, text: 'Sunday' },
   ];
-  const imge = { uri: 'https://w0.peakpx.com/wallpaper/874/459/HD-wallpaper-waiting-for-tomorrow-imge-nature-tomorrow-waiting.jpg' }
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
-  const [search, setsearch] = useState('Baku')
+  const [search, setsearch] = useState('Astana')
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,10 +24,10 @@ const App = () => {
           `http://api.weatherapi.com/v1/forecast.json?key=b53d68e3e4894fba901174157231712&q=${search}&days=7&aqi=no&alerts=no`
         );
         setData(response.data);
-        setError(null); // Reset error state on successful fetch
+        setError(null); 
       } catch (error) {
         setError(error);
-        setData(null); // Reset data on error
+        setData(null);
       }
     };
 
@@ -72,16 +71,27 @@ const App = () => {
       </View>
     )
   }
+  let imge = require('./assets/1.jpg');
 
+//   if (data.current.temp_c < -6) {
+//     imge = require('./assets/5.jpg');
+// } else if (data.current.temp_c >= -5 && data.current.temp_c <= 0) {
+//     imge = require('./assets/1.jpg');
+// } else if (data.current.temp_c >= 1 && data.current.temp_c <= 10) {
+//     imge = require('./assets/4.jpg');
+// } else if (data.current.temp_c >= 11 && data.current.temp_c <= 20) {
+//     imge = require('./assets/3.jpg');
+// }
+  
 
   return (
     <ImageBackground source={imge} style={{ flex: 1, width: '100%', height: '100%' }} resizeMode="cover" >
       <View style={stayle.container}>
         <View >
           <TextInput
-        onChangeText={(text) => setsearch(text)} // Update the state with setsearch function
+        onChangeText={(text) => setsearch(text)} 
             value={search}
-            style={{ marginTop: '15%', width: '80%', height: 35, backgroundColor: 'gray', borderRadius: 20, marginHorizontal: '10%', paddingLeft: 20 }}
+            style={{ marginTop: '15%', width: '80%', height: 35, backgroundColor: 'gray', borderRadius: 20, marginHorizontal: '10%', paddingLeft: 20, marginBottom:'5%' }}
             placeholder='Search'
           />
         </View>
@@ -125,7 +135,7 @@ const App = () => {
           </View>
         </View>
 
-        <View style={{ marginTop: '20%' }}>
+        <View style={{ marginTop: '10%' }}>
           <FlatList
             style={{ marginTop: '20%' }}
             data={days}
@@ -184,7 +194,7 @@ const stayle = StyleSheet.create({
   tempview: {
     display: 'flex',
     flexDirection: 'row',
-    marginLeft: '15%'
+    marginLeft: '10%'
   },
   tempview1: {
     display: 'flex',
